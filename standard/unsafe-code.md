@@ -1051,9 +1051,7 @@ When the outermost containing struct variable of a fixed-size buffer member is a
 
 See [§12.8.22](expressions.md#12822-stack-allocation) for general information about the operator `stackalloc`. Here, the ability of that operator to result in a pointer is discussed.
 
-In an unsafe context if a *stackalloc_expression* ([§12.8.22](expressions.md#12822-stack-allocation)) occurs as the initializing expression of a *local_variable_declaration* ([§13.6.2](statements.md#1362-local-variable-declarations)), where the *local_variable_type* is either a pointer type ([§23.3](unsafe-code.md#233-pointer-types)) or inferred (`var`), then the result of the *stackalloc_expression* is a pointer of type `T *` to be beginning of the allocated block, where `T` is the *unmanaged_type* of the *stackalloc_expression*.
-
-In all other respects the semantics of *local_variable_declaration*s ([§13.6.2](statements.md#1362-local-variable-declarations)) and *stackalloc_expression*s ([§12.8.22](expressions.md#12822-stack-allocation)) in unsafe contexts follow those defined for safe contexts.
+When a *stackalloc_expression* occurs as the initializing expression of a *local_variable_declaration* ([§13.6.2](statements.md#1362-local-variable-declarations)), where the *local_variable_type* is either a pointer type ([§23.3](unsafe-code.md#233-pointer-types)) or inferred (`var`), the result of the *stackalloc_expression* is a pointer of type `T *`, where `T` is the *unmanaged_type* of the *stackalloc_expression*. In this case the result is a pointer to be beginning of the allocated block.
 
 > *Example*:
 >
