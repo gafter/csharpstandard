@@ -54,7 +54,7 @@ interface_type
     ;
 
 array_type
-    | non_array_type rank_specifier+
+    : non_array_type rank_specifier+
     | non_array_type ( nullable_type_annotation rank_specifier+ )+
     ;
 
