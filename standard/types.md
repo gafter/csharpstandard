@@ -64,6 +64,7 @@ non_array_type
     | delegate_type
     | 'dynamic'
     | type_parameter
+    | nullable_reference_type
     | pointer_type      // unsafe code support
     ;
 
@@ -737,6 +738,8 @@ There are two forms of nullability for reference types:
 > *Note:* The types `R` and `R?` are represented by the same underlying type, `R`. A variable of that underlying type can either contain a reference to an object or be the value `null`, which indicates “no reference.” *end note*
 
 The syntactic distinction between a *nullable reference type* and its corresponding *non-nullable reference type* enables a compiler to generate diagnostics. A compiler must allow the *nullable_type_annotation* as defined in [§8.2.1](types.md#821-general). The diagnostics must be limited to warnings. Neither the presence or absence of nullable annotations, nor the state of the nullable context can change the compile time or runtime behavior of a program except for changes in any diagnostic messages generated at compile time.
+
+The only exception to this general rule is that adding a nullable annotation can change the syntactic meaning of the type of an array of arrays. Specifically, a type such as `A[][,]` is an array of two-dimensional arrays. That is because the syntactic meaning of the array dimensions in the array type are read from the inside out. However, by adding a nullable annotation between the dimensions, writing `A[]?[,]`, changes the parsing and therefore syntactic meaning of the type. In this case, the element type of the array is `A[]?`. The type is now a two-dimensional array of a nullable array type.
 
 ### 8.9.2 Non-nullable reference types
 
