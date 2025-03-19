@@ -47,6 +47,7 @@ In effect, the *rank_specifier*s are read from left to right *before* the final 
 > *Example*: The type in `T[][,,][,]` is a single-dimensional array of three-dimensional arrays of two-dimensional arrays of `int`. *end example*
 
 At run-time, a value of an array type can be:
+
 - `null`; or
 - a reference to an instance of that array type; or
 - a reference to an instance of a covariant array type, following the rules of [§17.6](arrays.md#176-array-covariance).
