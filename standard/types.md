@@ -54,7 +54,8 @@ interface_type
     ;
 
 array_type
-    : non_array_type rank_specifier+
+    | non_array_type rank_specifier+
+    | non_array_type ( nullable_type_annotation rank_specifier+ )+
     ;
 
 non_array_type
@@ -64,7 +65,6 @@ non_array_type
     | delegate_type
     | 'dynamic'
     | type_parameter
-    | nullable_reference_type
     | pointer_type      // unsafe code support
     ;
 
